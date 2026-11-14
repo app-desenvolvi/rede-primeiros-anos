@@ -282,16 +282,40 @@
     v.addEventListener('playing', function () { tocou = true; clearTimeout(tempo); });
     pular.addEventListener('click', function () { encerrar('pulou'); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') encerrar('pulou'); });
-    som.addEventListener('click', function () {
-      v.muted = !v.muted;
+    function marcarSom() {
       var on = !v.muted;
       som.setAttribute('aria-pressed', on ? 'true' : 'false');
       som.setAttribute('aria-label', on ? 'Desligar o som do vídeo' : 'Ativar o som do vídeo');
+      som.classList.toggle('pede-som', !on && !!cfg.avisoSom);
+    }
+    som.addEventListener('click', function () {
+      v.muted = !v.muted;
+      marcarSom();
       if (v.paused && !encerrado) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
     });
+    if (cfg.avisoSom) { var av = document.createElement('span'); av.className = 'som-txt'; av.textContent = String(cfg.avisoSom); som.appendChild(av); }
+    /* com som: tenta tocar já com áudio; se o navegador bloquear, toca mudo e liga o som no primeiro toque/clique/tecla */
+    function ligarNoGesto(e) {
+      if (e && e.target && e.target.closest && e.target.closest('.intro-ctrl')) return;
+      ['pointerdown', 'keydown', 'touchend'].forEach(function (ev) { document.removeEventListener(ev, ligarNoGesto, true); });
+      if (encerrado || !v.muted) return;
+      v.muted = false; marcarSom();
+      if (v.paused) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    }
+    function tocarMudo() {
+      v.muted = true; marcarSom();
+      var pm = v.play();
+      if (pm && pm.catch) pm.catch(function () { encerrar('bloqueado'); });
+      ['pointerdown', 'keydown', 'touchend'].forEach(function (ev) { document.addEventListener(ev, ligarNoGesto, true); });
+    }
     v.src = src;
-    var p = v.play();
-    if (p && p.catch) p.catch(function () { encerrar('bloqueado'); });
+    if (cfg.som === true) {
+      v.muted = false; v.removeAttribute('muted'); marcarSom();
+      var p = v.play();
+      if (p && p.catch) p.catch(tocarMudo);
+    } else {
+      tocarMudo();
+    }
     tempo = setTimeout(function () { if (!tocou) encerrar('lento'); }, 6000);
     pular.focus({ preventScroll: true });
   }

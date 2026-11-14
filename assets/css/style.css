@@ -488,3 +488,10 @@ html.intro-lock{overflow:hidden}
 .site-entra .ht-art .pill{animation:sFade .7s ease both 1s}
 .site-entra .ht-wave{animation:sFade .8s ease both .5s}
 @media (prefers-reduced-motion:reduce){.abertura{display:none!important}}
+
+/* aviso de som na abertura (quando o navegador bloqueia o áudio automático) */
+.intro-btn .som-txt{display:none;font-weight:700;font-size:.95rem}
+.intro-btn.pede-som .som-txt{display:inline}
+#intro-som.pede-som{padding:0 16px 0 12px}
+.intro-btn.pede-som{animation:somPulso 1.6s ease-in-out infinite}
+@keyframes somPulso{0%,100%{box-shadow:0 0 0 0 rgba(255,192,0,.0)}50%{box-shadow:0 0 0 6px rgba(255,192,0,.45)}}
