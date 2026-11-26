@@ -1,26 +1,29 @@
 /* ==========================================================================
-   REDE DESENVOLVI — CONFIGURAÇÃO DO SITE
-   Edite SOMENTE este arquivo para: adicionar cidades, trocar telefones,
-   textos de WhatsApp, equipe, depoimentos e parceiros.
+   REDE PRIMEIROS ANOS — CONFIGURAÇÃO DO SITE
+   Edite SOMENTE este arquivo para: Instagram, contato da Rede, vídeos,
+   Bebêminhada e a lista de membros (diretório).
    Nenhum telefone ou texto operacional fica "chumbado" no HTML.
    ========================================================================== */
 window.REDE_CONFIG = {
   marca: {
     nome: 'Rede Primeiros Anos',
-    instagram: 'https://www.instagram.com/desenvol.vi/',
-    instagramUsuario: '@desenvol.vi',
-    consultoriaUrl: 'https://www.instagram.com/stories/highlights/18205305811158664/',
-    primeiraInfanciaUrl: 'primeira-infancia.html'
+    /* Instagram próprio da Rede (@redeprimeirosanos, a criar). Vazio = o link do rodapé não aparece. */
+    instagram: '',
+    instagramUsuario: '@redeprimeirosanos',
+    primeiraInfanciaUrl: 'primeira-infancia.html',
+    /* site da Bebêminhada Solidária (seção Ações da Rede). Vazio = o botão não aparece. */
+    bebeminhadaUrl: 'https://bebeminhada.desenvolvi.site'
   },
 
-  /* Abertura em vídeo (tela cheia). ativo:false desliga.
-     final: 'foto' = o vídeo encolhe e vira a foto do topo; 'video' = o vídeo fica parado no último quadro, no lugar da foto. */
-  intro: { ativo: true, video: 'assets/video/intro.mp4', final: 'video', som: true, avisoSom: 'Toque para ouvir' },
+  /* Abertura em vídeo: a Rede abre sem vídeo por enquanto (decisão de 18/11/2026); um vídeo próprio fica para depois.
+     Para usar no futuro: volte o bloco <div class="abertura"> ao index.html e preencha "video" e ativo: true. */
+  intro: {
+    ativo: false, video: '', final: 'video', som: true, avisoSom: 'Toque para ouvir',
+    reabrir: false, textoAssistir: 'Assistir ao vídeo em tela cheia', textoFechar: 'Fechar vídeo'
+  },
 
-  /* Fotos do site. Coloque os arquivos em assets/img/fotos/ e preencha o caminho em "src".
-     Deixe src vazio para manter a ilustração (topo) ou ocultar o espaço (demais). */
+  /* Fotos opcionais. Coloque os arquivos em assets/img/fotos/ e preencha o caminho em "src". Vazio = o espaço não aparece. */
   fotos: {
-    hero: { src: 'assets/img/fotos/01.jpg', alt: 'Profissional sorrindo e estimulando um bebê deitado de bruços em um tapete de atividades' },
     primeiraInfancia: { src: '', alt: 'Bebê explorando brinquedos sensoriais' }
   },
 
@@ -29,67 +32,23 @@ window.REDE_CONFIG = {
     primeiraInfancia: { id: 'ttJtRokJJIk', titulo: 'O que é Primeira Infância?', canal: 'Fundação Maria Cecilia Souto Vidigal' }
   },
 
-  /* Mensagens pré-preenchidas do WhatsApp (use {cidade} para inserir a cidade) */
+  /* Mensagem pré-preenchida do WhatsApp do botão "Quero fazer parte" */
   mensagens: {
-    contato: 'Olá, gostaria de saber mais sobre a Rede Primeiros Anos!',
-    aulaExperimental: 'Olá, gostaria de agendar uma aula experimental na Rede Primeiros Anos ({cidade})!',
-    parceiro: 'Olá, quero conhecer a Rede Primeiros Anos e ser parceiro(a)!'
+    parceiro: 'Olá! Sou profissional e quero conhecer a Rede Primeiros Anos para fazer parte.'
   },
 
-  /* Contato comercial da rede (seção "Seja parceiro"). Telefone com DDI+DDD, só números. */
-  contatoRede: { telefone: '5532991359888' },
+  /* Contato da Rede para profissionais (seção "Faça parte"). WhatsApp com DDI+DDD, só números. */
+  contatoRede: { telefone: '5512992009404' },
 
-  /* Uma linha por unidade ativa. Para abrir uma nova cidade, copie um bloco. */
-  cidades: [
-    {
-      id: 'jf',
-      nome: 'Juiz de Fora',
-      uf: 'MG',
-      local: 'Shopping Alameda',
-      telefone: '5532991359888',
-      ativa: true
-    },
-    {
-      id: 'sjc',
-      nome: 'São José dos Campos',
-      uf: 'SP',
-      local: 'Boulevard Lugo',
-      telefone: '5512992009404',
-      ativa: true
-    }
-  ],
-
-  /* Equipe. Para usar foto, preencha "foto" com o caminho (ex.: 'assets/img/equipe/vivi.jpg'). */
-  equipe: [
-    {
-      nome: 'Drª Viviane Hipólito',
-      apelido: 'Tia Vivi',
-      cargo: 'Fisioterapeuta e administradora · sócia-fundadora',
-      texto: 'Há 15 anos ajuda bebês a se desenvolverem de forma plena, orientando também seus familiares e responsáveis.',
-      foto: '',
-      iniciais: 'VH'
-    },
-    {
-      nome: 'Drª Amanda Baio',
-      apelido: '',
-      cargo: 'Fisioterapeuta (UFJF) · responsável pela unidade Juiz de Fora',
-      texto: 'Encantada pela fisioterapia pediátrica, direciona seu conhecimento para ajudar bebês e crianças a explorarem todo o seu potencial.',
-      foto: '',
-      iniciais: 'AB'
-    }
-  ],
-
-  /* Depoimentos reais. Enquanto a lista estiver vazia, a seção fica oculta.
-     Exemplo: { texto: '...', autor: 'Nome', detalhe: 'mãe do João, 8 meses · Juiz de Fora' } */
+  /* A Rede não tem unidades, equipe de atendimento nem depoimentos de famílias (isso é da DesenvolVi).
+     As listas ficam vazias; "cidades" pode voltar como "onde a Rede está" quando houver membros nas cidades. */
+  cidades: [],
+  equipe: [],
   depoimentos: [],
 
-  parceiros: [
-    { nome: 'Mamãe Dynamo', url: 'https://www.instagram.com/mamae_dynamo/' },
-    { nome: 'Nutrikids', url: 'https://www.instagram.com/nutrikidsbr' },
-    { nome: 'Casullo Saúde', url: 'https://www.instagram.com/casullo.saude' },
-    { nome: 'Amo Vacinas SJC', url: 'https://amovacinassjc.com.br/' },
-    { nome: 'Clínica Exclusivitè', url: 'https://www.instagram.com/clinicaexclusivite/' },
-    { nome: 'Nana Neném', url: 'https://consultorianananenem.com.br/' },
-    { nome: 'Somos Luanda', url: 'https://www.somosluanda.com.br/' }
-  ]
+  /* Diretório de membros: montado depois das conversas com os profissionais. Vazio = a lista não aparece.
+     Exemplo: { nome: 'Nome do profissional ou serviço', url: 'https://...' }
+     Lista que estava no site até 25/11/2026, para referência: Mamãe Dynamo, Nutrikids, Casullo Saúde,
+     Amo Vacinas SJC, Clínica Exclusivitè, Nana Neném, Somos Luanda. */
+  parceiros: []
 };
