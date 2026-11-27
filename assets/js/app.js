@@ -151,6 +151,73 @@
     }
   }
 
+  /* "Como cuidar": uma aba por parte da casa (config.orientacoes) */
+  function renderComo() {
+    var alvo = $('como-orientacoes');
+    var lista = CFG.orientacoes || [];
+    if (!alvo || !lista.length) return;
+    var abas = '', paineis = '';
+    lista.forEach(function (o, i) {
+      var id = 'como-' + String(o.id).replace(/[^\w-]/g, '');
+      var ativa = i === 0;
+      abas += `<button type="button" class="como-aba" role="tab" id="${id}-aba" aria-controls="${id}" aria-selected="${ativa}" tabindex="${ativa ? 0 : -1}" style="--c:${escapeHtml(o.cor)}">
+          <b>${escapeHtml(o.titulo)}</b><span>${escapeHtml(o.fase)}</span></button>`;
+      var itens = '';
+      (o.itens || []).forEach(function (it) {
+        itens += `<li><b>${escapeHtml(it.tema)}</b><span>${escapeHtml(it.texto)}</span></li>`;
+      });
+      var fontes = (o.fontes || []).map(function (f) {
+        var u = urlSegura(f.url);
+        return u ? `<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(f.nome)}</a>` : escapeHtml(f.nome);
+      }).join('; ');
+      paineis += `<div class="como-painel" role="tabpanel" id="${id}" aria-labelledby="${id}-aba" style="--c:${escapeHtml(o.cor)}"${ativa ? '' : ' hidden'}>
+          <ul class="como-lista">${itens}</ul>
+          ${fontes ? `<p class="fonte">Fontes: ${fontes}.</p>` : ''}
+        </div>`;
+    });
+    alvo.innerHTML = `<div class="como-abas" role="tablist" aria-label="Partes da casa">${abas}</div>${paineis}`;
+    var botoes = alvo.querySelectorAll('.como-aba');
+    function ativar(btn, foco) {
+      botoes.forEach(function (b) {
+        var sel = b === btn;
+        b.setAttribute('aria-selected', sel); b.tabIndex = sel ? 0 : -1;
+        var painel = $(b.getAttribute('aria-controls'));
+        if (painel) painel.hidden = !sel;
+      });
+      if (foco) btn.focus();
+    }
+    botoes.forEach(function (b, i) {
+      b.addEventListener('click', function () { ativar(b, false); });
+      b.addEventListener('keydown', function (e) {
+        var n = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!n) return;
+        e.preventDefault();
+        ativar(botoes[(i + n + botoes.length) % botoes.length], true);
+      });
+    });
+  }
+
+  /* "Boas notícias": mural (config.noticias); vazio = a seção fica escondida */
+  function renderNoticias() {
+    var sec = $('noticias'), alvo = $('noticias-lista');
+    var lista = (CFG.noticias || []).slice().sort(function (a, b) { return String(b.data || '').localeCompare(String(a.data || '')); });
+    if (!sec || !alvo) return;
+    if (!lista.length) { sec.hidden = true; return; }
+    var buf = '';
+    lista.forEach(function (n) {
+      var u = urlSegura(n.url);
+      var d = /^\d{4}-\d{2}-\d{2}$/.test(n.data || '') ? n.data.split('-').reverse().join('/') : '';
+      buf += `<article class="noticia">
+          ${d ? `<time datetime="${escapeHtml(n.data)}">${escapeHtml(d)}</time>` : ''}
+          <h3>${u ? `<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(n.titulo)}</a>` : escapeHtml(n.titulo)}</h3>
+          <p>${escapeHtml(n.resumo)}</p>
+          ${n.fonte ? `<p class="fonte">${escapeHtml(n.fonte)}</p>` : ''}
+        </article>`;
+    });
+    alvo.innerHTML = buf;
+    sec.hidden = false;
+  }
+
   /* links opcionais da configuração: vazio = o link não aparece */
   function renderLinks() {
     var m = CFG.marca || {};
@@ -509,6 +576,8 @@
     renderDepoimentos();
     renderParceiros();
     renderLinks();
+    renderComo();
+    renderNoticias();
     renderContato();
     var ano = $('ano');
     if (ano) ano.textContent = new Date().getFullYear();

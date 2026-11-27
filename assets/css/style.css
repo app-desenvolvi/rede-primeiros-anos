@@ -560,3 +560,52 @@ html.intro-lock{overflow:hidden}
 .beneficios strong{font-family:var(--font-display);font-size:22px;color:var(--yellow)}
 .beneficios span{font-size:17px;opacity:.92}
 @media (max-width:640px){.quem,.ess,.acao,.por-que{padding:22px}.dado strong{font-size:40px}}
+
+/* ==========================================================================
+   Página única pelo roteiro: o que, por que, como e quem (26/11/2026)
+   ========================================================================== */
+.ancora{display:block;height:0;scroll-margin-top:120px}
+@media (max-width:700px){.ancora{scroll-margin-top:84px}}
+
+/* o que: os cinco cuidados */
+.cuidados{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.cuidados li{background:#fff;border-radius:20px;padding:22px;border-top:8px solid var(--c);display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 24px rgba(11,42,94,.08)}
+.cuidados b{font-family:var(--font-display);font-size:20px;line-height:1.2}
+.cuidados span{font-size:16px;line-height:1.5}
+
+/* por que: ganhos */
+.ganhos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:start}
+.ganho{background:#fff;border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(11,42,94,.08)}
+.ganho h3{font-size:24px}
+.ganho p{font-size:17px;margin:0}
+.ganho .fonte{font-size:14px}
+
+/* como: abas por parte da casa */
+.como-abas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:20px}
+.como-aba{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:14px 16px;border-radius:18px;border:2px solid var(--c);background:#fff;color:var(--plum);font-family:inherit;cursor:pointer;min-height:64px}
+.como-aba b{font-family:var(--font-display);font-size:20px;line-height:1.15}
+.como-aba span{font-size:14px;font-weight:600;color:var(--muted)}
+.como-aba[aria-selected="true"]{background:var(--c);box-shadow:0 8px 20px rgba(11,42,94,.15)}
+.como-aba[aria-selected="true"] span{color:var(--plum)}
+.como-painel{background:#fff;border-radius:var(--radius);padding:24px;border-top:8px solid var(--c);box-shadow:0 8px 24px rgba(11,42,94,.08)}
+.como-lista{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.como-lista li{background:var(--cream);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.como-lista b{font-family:var(--font-display);font-size:18px;line-height:1.25}
+.como-lista span{font-size:16px;line-height:1.5}
+.como-painel .fonte{margin:16px 0 0}
+@media (max-width:760px){.como-abas{grid-template-columns:repeat(2,minmax(0,1fr))}.como-painel{padding:16px}}
+
+/* quem: mural de boas notícias */
+.mural{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.noticia{background:#fff;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 24px rgba(11,42,94,.08)}
+.noticia time{font-size:14px;font-weight:700;color:var(--muted)}
+.noticia h3{font-size:21px;line-height:1.25}
+.noticia h3 a{color:var(--purple)}
+.noticia p{margin:0;font-size:16px}
+
+/* rodapé: faça parte (para profissionais) */
+.site-footer .ft-parte{padding-top:28px;padding-bottom:24px;border-bottom:1px solid rgba(11,42,94,.12);flex-wrap:wrap;gap:12px 24px}
+.ft-parte div{flex:1 1 420px;display:flex;flex-direction:column;gap:4px}
+.ft-parte strong{font-family:var(--font-display);font-size:20px}
+.ft-parte span{font-size:15px}
+#diretorio .partners-list{border:0;padding:0}
