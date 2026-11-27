@@ -47,7 +47,7 @@ window.REDE_CONFIG = {
   depoimentos: [],
 
   /* "Como cuidar": orientações gerais por parte da casa (rascunho em revisão pelas profissionais da Rede).
-     Para editar: troque o texto de "itens". "fontes" aparece abaixo das orientações de cada parte. */
+     Para editar: troque o texto de "itens". "fontes" aparece abaixo das orientações de cada parte, só como citação (sem link). */
   orientacoes: [
     {
       id: 'terreno', titulo: 'Terreno', fase: 'Da gestação aos 3 meses', cor: '#92D050',
@@ -69,8 +69,8 @@ window.REDE_CONFIG = {
         { tema: 'Testes do nascimento', texto: 'Nos primeiros dias, o bebê faz os testes do pezinho, do olhinho, da orelhinha e do coraçãozinho. Descobertas cedo, muitas doenças podem ser tratadas com sucesso.' }
       ],
       fontes: [
-        { nome: 'Caderneta Brasileira da Gestante, Ministério da Saúde (2026)', url: 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-da-mulher/publicacoes/caderneta-brasileira-da-gestante.pdf' },
-        { nome: 'Pré-natal, Ministério da Saúde', url: 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/g/gravidez/pre-natal' },
+        { nome: 'Caderneta Brasileira da Gestante, Ministério da Saúde (2026)', url: '' },
+        { nome: 'Pré-natal, Ministério da Saúde', url: '' },
         { nome: 'Caderneta da Criança, Ministério da Saúde (2025)', url: '' }
       ]
     },
@@ -127,7 +127,7 @@ window.REDE_CONFIG = {
   noticias: [],
 
   /* Diretório de membros: montado depois das conversas com os profissionais. Vazio = a lista não aparece.
-     Exemplo: { nome: 'Nome do profissional ou serviço', url: 'https://...' }
+     Exemplo: { nome: 'Nome do profissional ou serviço', url: '' }
      Lista que estava no site até 25/11/2026, para referência: Mamãe Dynamo, Nutrikids, Casullo Saúde,
      Amo Vacinas SJC, Clínica Exclusivitè, Nana Neném, Somos Luanda. */
   parceiros: []
