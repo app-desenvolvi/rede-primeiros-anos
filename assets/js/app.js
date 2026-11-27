@@ -175,7 +175,7 @@
           ${fontes ? `<p class="fonte">Fontes: ${fontes}.</p>` : ''}
         </div>`;
     });
-    alvo.innerHTML = `<div class="como-abas" role="tablist" aria-label="Partes da casa">${abas}</div>${paineis}`;
+    alvo.innerHTML = `<div class="como-abas" role="tablist" aria-label="Fases da primeira infância">${abas}</div>${paineis}`;
     var botoes = alvo.querySelectorAll('.como-aba');
     function ativar(btn, foco) {
       botoes.forEach(function (b) {
