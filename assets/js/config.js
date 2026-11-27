@@ -105,7 +105,7 @@ window.REDE_CONFIG = {
       fontes: [ { nome: 'Caderneta da Criança, Ministério da Saúde (2025)', url: '' } ]
     },
     {
-      id: 'todas', titulo: 'Em todas as fases', fase: 'Da gestação aos 6 anos', cor: '#FF5050',
+      id: 'todas', titulo: 'Em todas as fases', fase: 'Do nascimento aos 6 anos', cor: '#FF5050',
       itens: [
         { tema: 'Consultas', texto: 'Leve a criança às consultas de rotina mesmo quando ela não está doente: na primeira semana, com 1, 2, 4, 6, 9, 12, 18, 24 e 36 meses, e depois uma vez por ano.' },
         { tema: 'Vacinas', texto: 'A vacinação protege a criança de doenças e é gratuita no SUS. O Calendário Nacional de Vacinação está na Caderneta da Criança.' },
