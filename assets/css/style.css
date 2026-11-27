@@ -609,3 +609,13 @@ html.intro-lock{overflow:hidden}
 .ft-parte strong{font-family:var(--font-display);font-size:20px}
 .ft-parte span{font-size:15px}
 #diretorio .partners-list{border:0;padding:0}
+
+/* a Rede: crenças lado a lado e o propósito logo abaixo */
+.ess-tit{font-size:24px;margin:0 0 16px}
+.crencas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.crencas li{background:var(--lilac);border-radius:var(--radius);padding:24px;font-size:17px;line-height:1.55;border-top:8px solid var(--purple)}
+.crencas li:nth-child(1){border-top-color:var(--yellow)}.crencas li:nth-child(2){border-top-color:var(--coral)}.crencas li:nth-child(3){border-top-color:var(--sky)}
+.proposito{margin-top:24px;background:var(--purple);color:#fff;border-radius:var(--radius);padding:28px 32px;display:flex;flex-direction:column;gap:10px}
+.proposito h3{font-size:24px;color:#fff}
+.proposito p{font-size:19px;margin:0;max-width:900px}
+@media (max-width:820px){.crencas{grid-template-columns:1fr}.proposito{padding:22px}}
